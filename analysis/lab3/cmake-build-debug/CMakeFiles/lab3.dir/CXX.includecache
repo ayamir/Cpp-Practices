@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/mir/code/cpp/analysis/lab3/main.cpp
+main.hpp
+/home/mir/code/cpp/analysis/lab3/main.hpp
+cmath
+-
+iostream
+-
+
+/home/mir/code/cpp/analysis/lab3/main.hpp
+algorithm
+-
+eigen3/Eigen/Eigen
+-
+fstream
+-
+map
+-
+vector
+-
+
