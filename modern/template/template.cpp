@@ -64,6 +64,7 @@ private:
   T data[BufSize];
 };
 
+// 类型推导模版参数 C++2a above support
 template <auto value> void foo() {
   std::cout << value << std::endl;
   return;
