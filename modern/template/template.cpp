@@ -53,6 +53,9 @@ template <typename T, typename... Ts> auto printf3(T value, Ts... args) {
 
 // 折叠表达式
 template <typename... T> auto sum(T... t) { return (t + ...); }
+template <typename... T> auto average(T... t) {
+  return sum(t...) / static_cast<double>(sizeof...(t));
+}
 
 // 非类型模版参数推导
 template <typename T, int BufSize> class buffer_t {
@@ -65,10 +68,10 @@ private:
 };
 
 // 类型推导模版参数 C++2a above support
-template <auto value> void foo() {
-  std::cout << value << std::endl;
-  return;
-}
+/* template <auto value> void foo() { */
+/*   std::cout << value << std::endl; */
+/*   return; */
+/* } */
 
 int main() {
   TrueDarkMagic<bool> you;
@@ -89,11 +92,11 @@ int main() {
   printf3(1, 2, "123", 1.1);
   std::cout << std::endl;
 
-  std::cout << sum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) << std::endl;
+  std::cout << average(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) << std::endl;
 
   buffer_t<int, 100> buf;
 
-  foo<10>();
+  /* foo<10>(); */
 
   return 0;
 }
