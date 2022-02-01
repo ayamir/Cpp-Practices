@@ -11,10 +11,10 @@ struct ListNode {
 
 class Solution {
 public:
-  ListNode *reverseList(ListNode *head) {
+  ListNode *reverseListDoublePointer(ListNode *head) {
     ListNode *prev = nullptr;
     ListNode *curr = head;
-    while (curr) {
+    while (curr != nullptr) {
       // store original next as new prev
       ListNode *next = curr->next;
       // make original prev as new next
@@ -23,6 +23,16 @@ public:
       curr = next;
     }
     return prev;
+  }
+
+  ListNode *reverseListRecursive(ListNode *head) {
+    if (head == nullptr || head->next == nullptr) {
+      return head;
+    }
+    ListNode *curr = reverseListRecursive(head->next);
+    head->next->next = head;
+    head->next = nullptr;
+    return curr;
   }
 
   void iter(ListNode *head) {
@@ -40,7 +50,7 @@ int main(int argc, char *argv[]) {
   ListNode second(2, &third);
   ListNode first(1, &second);
 
-  s.iter(s.reverseList(&first));
+  s.iter(s.reverseListRecursive(&first));
 
   return 0;
 }
