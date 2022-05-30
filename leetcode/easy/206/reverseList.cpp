@@ -37,8 +37,9 @@ public:
 
   void iter(ListNode *head) {
     for (auto p = head; p != nullptr; p = p->next) {
-      std::cout << p->val << std::endl;
+      std::cout << p->val << " ";
     }
+    std::cout << std::endl;
   }
 };
 
