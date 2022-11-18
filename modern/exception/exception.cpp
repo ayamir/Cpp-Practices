@@ -9,12 +9,13 @@ void no_throw() { return; }
 auto block_throw = []() noexcept { no_throw(); };
 
 int main() {
-  std::cout << std::boolalpha << "may_throw() noexcept? "
-            << noexcept(may_throw()) << std::endl
-            << "no_throw() noexcept? " << noexcept(no_throw()) << std::endl
-            << "lmay_throw() noexcept? " << noexcept(non_block_throw())
-            << std::endl
-            << "lno_throw() noexcept? " << noexcept(block_throw()) << std::endl;
+    std::cout << std::boolalpha << "may_throw() noexcept? "
+              << noexcept(may_throw()) << std::endl
+              << "no_throw() noexcept? " << noexcept(no_throw()) << std::endl
+              << "lmay_throw() noexcept? " << noexcept(non_block_throw())
+              << std::endl
+              << "lno_throw() noexcept? " << noexcept(block_throw())
+              << std::endl;
 
-  return 0;
+    return 0;
 }
