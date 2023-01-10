@@ -1,5 +1,6 @@
 #include "bag.h"
 #include <algorithm>
+#include <cstdlib>
 #include <iostream>
 
 Bag::Bag() {
