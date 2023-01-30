@@ -74,7 +74,7 @@ int main() {
     for (int i = 0; i < 100; i++) {
         vt2.emplace_back([&]() {
             // strict consistency limit, may lower performance
-            counter2.fetch_add(1, std::memory_order_seq_cst);
+            counter2.fetch_add(1, std::memory_order_acq_rel);
         });
     }
 
