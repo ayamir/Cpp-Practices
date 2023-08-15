@@ -23,5 +23,11 @@ class Solution {
 
 int main(int argc, char *argv[]) {
     Solution s;
+    vector<int> nums = {1, 2, 3, 4, 5};
+    auto res = s.productExceptSelf(nums);
+    for (int i = 0; i < res.size(); i++) {
+        cout << res[i] << " ";
+    }
+    cout << endl;
     return 0;
 }
