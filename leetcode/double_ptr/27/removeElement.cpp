@@ -7,15 +7,14 @@ using namespace std;
 class Solution {
   public:
     int removeElement(vector<int> &nums, int val) {
-        int n = nums.size();
-        int left = 0;
-        for (int right = 0; right < n; right++) {
-            if (nums[right] != val) {
-                nums[left] = nums[right];
-                left++;
+        int size = nums.size();
+        int slowIndex = 0;
+        for (int fastIndex = 0; fastIndex < size; fastIndex++) {
+            if (nums[fastIndex] != val) {
+                nums[slowIndex++] = nums[fastIndex];
             }
         }
-        return left;
+        return slowIndex;
     }
 
     void iter(vector<int> &nums) {
