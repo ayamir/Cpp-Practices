@@ -24,7 +24,7 @@ class Point {
     Point(int x, int y) : x(x), y(y) {
         printf("%sConstruct (%d, %d)%s\n", GRN, x, y, RESET);
     }
-    Point(Point &p) : x(p.x), y(p.y) {
+    Point(const Point &p) : x(p.x), y(p.y) {
         printf("%sCopy (%d, %d)%s\n", BLU, x, y, RESET);
     }
     Point(Point &&rhs) : x(rhs.x), y(rhs.y) {
@@ -36,6 +36,10 @@ class Point {
 struct EPNotWork {
     int noConstructor;
 };
+
+Point a{1, 2};
+Point b{2, 3};
+Point c{3, 4};
 
 void push_back_test() {
     vector<Point> vec;
@@ -63,12 +67,40 @@ void emplace_back_test() {
     cout << endl;
 }
 
+void push_back_old_obj() {
+    vector<Point> vec;
+    if (is_reserve) {
+        vec.reserve(3);
+    }
+    vec.push_back(a);
+    vec.push_back(b);
+    vec.push_back(c);
+}
+
+void emplace_back_old_obj() {
+    vector<Point> vec;
+    if (is_reserve) {
+        vec.reserve(3);
+    }
+    vec.emplace_back(a);
+    vec.emplace_back(b);
+    vec.emplace_back(c);
+}
+
 void test_efficency() {
+    cout << "add NEW objects" << endl;
     cout << "push_back_test:" << endl;
     push_back_test();
     cout << endl;
     cout << "emplace_back_test:" << endl;
     emplace_back_test();
+    cout << endl;
+    cout << "add OLD objects" << endl;
+    cout << "push_back_test:" << endl;
+    push_back_old_obj();
+    cout << endl;
+    cout << "emplace_back_test:" << endl;
+    emplace_back_old_obj();
 }
 
 void test_for_strcut() {
