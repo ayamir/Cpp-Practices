@@ -32,11 +32,42 @@ class Solution {
 
         return res.substr(0, res.length() - 1);
     }
+    string reverseWords2(string s) {
+        string res = "";
+        int n = s.size();
+        bool firstFlag = true;
+        string curr = "";
+        for (int i = n - 1; i >= 0; i--) {
+            if (s[i] == ' ') {
+                if (curr == "") {
+                    continue;
+                } else {
+                    if (firstFlag) {
+                        res += curr;
+                        firstFlag = false;
+                    } else {
+                        res += " " + curr;
+                    }
+                    curr = "";
+                }
+            } else {
+                curr = s[i] + curr;
+            }
+        }
+        if (curr != "") {
+            if (res != "") {
+                res += " " + curr;
+            } else {
+                res += curr;
+            }
+        }
+        return res;
+    }
 };
 
 int main(int argc, char *argv[]) {
     Solution s;
-    string test = "   Hello word";
-    cout << s.reverseWords(test);
+    string test = "  the sky is blue  ";
+    cout << s.reverseWords2(test);
     return 0;
 }
