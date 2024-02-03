@@ -10,8 +10,8 @@ static void fileTrace(void *ctx, int level, const char *string) {
 
 void CodeTrace::SetOption(void *pFunc) {
     fprintf(stdout, "pFunc address = %p\n", pFunc);
-    LogTraceFunc callback = *((LogTraceFunc *)pFunc);
-    /* LogTraceFunc callback = (LogTraceFunc)pFunc; */
+    // LogTraceFunc callback = *((LogTraceFunc *)pFunc);
+    LogTraceFunc callback = (LogTraceFunc)pFunc;
     m_fpTrace = callback;
     fprintf(stdout, "callback set, address = %p\n", callback);
 }

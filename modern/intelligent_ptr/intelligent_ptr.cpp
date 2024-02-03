@@ -47,7 +47,7 @@ int main() {
     std::cout << "pointer3.use_count() = " << pointer3.use_count() << std::endl;
 
     std::unique_ptr<int> ptr = std::make_unique<int>(10);
-    // std::unique_ptr<int> ptr2 = ptr; error: unique_ptr is exclusive
+    // std::unique_ptr<int> ptr2 = ptr; // error: unique_ptr is exclusive
 
     std::unique_ptr<Foo> p1(std::make_unique<Foo>());
     // p1 isn't empty
