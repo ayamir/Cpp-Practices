@@ -17,12 +17,12 @@ template <typename T> void pass(T &&v) {
 }
 
 int main(int argc, char *argv[]) {
-    std::cout << "传递右值:" << std::endl;
-    pass(1);
-
     std::cout << "传递左值:" << std::endl;
     int l = 1;
     pass(l);
+
+    std::cout << "传递右值:" << std::endl;
+    pass(std::move(l));
 
     return 0;
 }

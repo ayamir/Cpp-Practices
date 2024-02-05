@@ -25,9 +25,11 @@ int main() {
 
     // expression capture
     auto important = std::make_unique<int>(1);
-    auto add = [v1 = 1, v2 = std::move(important)](int x, int y) -> int {
-        return x + y + v1 + (*v2);
+    auto add = [v1 = 0, v2 = std::move(important)](int x, int y) -> int {
+      *v2 = 10;
+      return x + y + v1 + *(v2.get());
     };
+    std::cout << add(0, 0) << std::endl;
 
     // generic lambda
     auto add2 = [](auto x, auto y) { return x + y; };
